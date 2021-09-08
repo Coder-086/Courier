@@ -16,4 +16,10 @@ public class PageController {
     public String forget(){
         return "forget";
     }
+
+    @RequestMapping("/otp")
+    public String otp(){ return "otp"; }
+
+    @RequestMapping("/setpassword")
+    public String setPassword(){ return "setpassword";}
 }

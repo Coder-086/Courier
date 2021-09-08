@@ -21,14 +21,14 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ResponseEntity signup(@RequestBody UserDTO userparam) throws InterruptedException{
+    public ResponseEntity signup(@RequestBody UserDTO userparam) throws Exception {
         User user = new User();
         user.setUsername(userparam.getUsername());
         user.setEmail(userparam.getEmail());
         user.setPassword(userparam.getPassword());
 
         if (!userService.isAccountExist(userparam)) {
-            userRepo.save(user);
+            userService.saveUser(user);
             return new ResponseEntity<>(HttpStatus.OK);
         }
 
@@ -60,5 +60,34 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
+    @RequestMapping(value = "/checkotp", method = RequestMethod.POST)
+    public ResponseEntity checkOtp(@RequestBody UserDTO userparam) throws Exception{
+
+        System.out.println("He>>>>>>>" + userparam.getEmail() + ">>" + userparam.getOtp());
+        User user = new User();
+
+        user.setEmail(userparam.getEmail());
+        int otp = userService.getOtp(user);
+        System.out.println(otp);
+        if(otp == userparam.getOtp()){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+
+    @RequestMapping(value = "/setpassword", method = RequestMethod.POST)
+    public ResponseEntity setpassword(@RequestBody UserDTO userParam) throws Exception {
+
+        System.out.println("Set>>>>>>>>" + userParam.getPassword() + ">>>>>>>>>>" + userParam.getEmail());
+
+        User user = new User();
+
+        user.setPassword(userParam.getPassword());
+        user.setEmail(userParam.getEmail());
+
+        userService.setPassword(user);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

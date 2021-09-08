@@ -8,14 +8,14 @@
 </head>
 <body>
 	<div class="box">
-		<h2>FOR RECOVERY LINK </h2>
+		<h2>Enter OTP </h2>
 		<form action="">
 			<div class="inputBox">
-				<input type="email" id= "email"name="" required="">
-				<label for="">Email</label>
+				<input type="text" id= "otp" name="" required="">
+				<label for="">OTP</label>
 			</div>
 
-			<input type="submit" name="" onclick="forget(event)" value="Submit">
+			<input type="submit" name="" onclick="Otp(event)" value="Submit">
 		</form>
 	</div>
 </body>

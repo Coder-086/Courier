@@ -25,10 +25,8 @@ public class UserService {
         Random rand = new Random();
         int otp_number = rand.nextInt(9999);
 
-        // Store in database
-        //userDAO.updat(user, otp_number);
+        userDAO.update(user, otp_number);
 
-        // send email with OTP
         System.out.println(otp_number);
         String emailBody = String.format("Hello %s,\n This is you OTP to Reset Your Password : %s\n", user.getEmail(),
                 otp_number);
@@ -64,5 +62,19 @@ public class UserService {
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    public void saveUser(User user) throws Exception {
+        userDAO.save(user);
+    }
+
+    public int getOtp(User user) throws Exception {
+        int user_otp = userDAO.getOtpByEmail(user);
+
+        return user_otp;
+    }
+
+    public void setPassword(User user) throws Exception {
+        userDAO.UpdatePassword(user);
     }
 }
