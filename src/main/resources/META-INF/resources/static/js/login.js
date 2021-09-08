@@ -22,7 +22,7 @@ function login(event){
     }
     console.log(email, password);
 
-    fetch("http://localhost:8088/login", {
+    fetch("http://localhost:8083/login", {
     	method: "POST",
     	headers: {
     		"Content-Type": "application/json"
@@ -55,7 +55,7 @@ function signup(event){
         return;
     }
     if(password == confirm_password){
-           fetch("http://localhost:8088/signup" , {
+           fetch("http://localhost:8083/signup" , {
            			method: "POST",
            			headers: {
            				"Content-Type": "application/json"
@@ -91,7 +91,7 @@ function forget(event){
     		swal("OOPS!!!!!!", "Fill Up all the Columns", "warning");
     		return;
     	}
-    	fetch("http://localhost:8088/sendotp", {
+    	fetch("http://localhost:8083/sendotp", {
     		method: "POST",
     		headers: {
     			"Content-Type": "application/json"

@@ -13,7 +13,7 @@ public class MailSenderService {
 
     public void sendmail(String to, String body, String topic) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setFrom("chatapp481@gmail.com");
+        simpleMailMessage.setFrom("courier7896@gmail.com");
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(topic);
         simpleMailMessage.setText(body);
