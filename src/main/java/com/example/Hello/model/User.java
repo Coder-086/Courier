@@ -12,7 +12,7 @@ public class User {
     private String email;
     private String username;
     private String password;
-    private int otp;
+    private Integer otp;
 
     public int getOtp() {
         return otp;
