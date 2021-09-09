@@ -1,17 +1,28 @@
 package com.example.Hello.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 @Entity
+@EntityScan
 @Table(name = "users")
 public class User {
 
     @Id
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "otp")
     private Integer otp;
 
     public int getOtp() {
@@ -46,4 +57,3 @@ public class User {
         this.password = password;
     }
 }
-
